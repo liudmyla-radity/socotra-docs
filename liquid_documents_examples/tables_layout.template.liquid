@@ -1,0 +1,17 @@
+{% comment %}
+  Example of he header alligmant using table tags.
+{% endcomment %}
+
+{% header %}
+  <table style="width: 100%;">
+    <tr>
+      <td align="left" style="width: auto;font-size: 20px;font-weight: bold;vertical-align: top;"></td>
+      <td align="right" colspan="1" style="width: 200px; margin: 0;padding: 0; font-size: 16px; font-weight: bold; vertical-align: top;">
+        <div style="width: 100%; margin: 0;padding: 0; text-align: end;">
+          <p style="width: 100%; margin: 0;padding: 0;">{{ allBusinessNames }}</p>
+          <p style="width: 100%; margin: 0;padding: 0;">Policy#{{ policy.display_id }}</p>
+        </div>
+      </td>
+    </tr>
+  </table>
+{% endheader %}

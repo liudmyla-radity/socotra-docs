@@ -1,0 +1,36 @@
+{% comment %}
+  Tip 1: Declare the global variables on the top of your document.
+  If variable is custom but can be reused, declare it on the top after global variables section. 
+  Add HTML comments to improve the readability.
+{% endcomment %}
+
+<!-- Assign global variables --> 
+  {% assign policy = data.policy %}
+  {% assign fieldValues = policy.characteristics.last.field_values %}
+  {% assign groupValues = policy.characteristics.last.field_groups_by_locator %}
+
+  {% assign cancellation = data.cancellation %}
+  {% assign price = cancellation.price %}
+<!-- End of assign global variables -->
+
+<!-- Assign broker logo URI -->
+  {% assign producerLocator = fieldValues.producer %}
+  {% assign logoURL  = groupValues[producerLocator].brokerageLogoURL%}
+<!-- End of the assign broker logo URI -->
+
+
+{% comment %}
+  Tip 2: Local variables and specified case logic should be written inside the corresponding HTML tag.
+{% endcomment %}
+
+  <td class='right-texted'>
+    {% if personalPropertyPeril.name == 'FAP001'%}
+      {% assign calculatedPersonalPropertyPerilDeductibleValue = personalPropertyPerilFieldValues.deductibleValue
+        | divided_by: 100
+        | times: personalPropertyPerildeductiblePercent
+        | at_least: 50000
+      %}
+
+      {{ calculatedPersonalPropertyPerilDeductibleValue | format_number: 'en', 'US' | prepend: '$' }}
+    {% endif %}
+  </td>

@@ -1,0 +1,18 @@
+{
+  "documents": [
+    {
+      "displayName": "File name that will be shown in UI",
+      "fileName": "file_name_that_user_can_see_after_download.pdf",
+      "templateName": "myBeautifulDocument.template.liquid",
+      "generatingEvent": "issue",
+      "type": "pdf",
+      "pageLayout": {
+        "marginLeft": 10,
+        "marginRight": 10,
+        "marginTop": 16,
+        "marginBottom": 16,
+        "orientation": "Portrait"
+      }
+    }
+  ]
+}
