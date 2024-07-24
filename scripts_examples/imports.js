@@ -6,6 +6,7 @@ const { getFieldValue } = require("../lib/autofill/lib/utils.js");
 // good
 const { getAddress, getFieldValue } = require("../lib/autofill/lib/utils.js");
 
+
 /* Use destructuring to improve code readability
 Use camelCase for new module import names */
 // bad
@@ -18,6 +19,7 @@ const { GET_ADDRESS } = require("../lib/autofill/lib/utils.js");
 
 // good
 const { getAddress, getFieldValue } = require("../lib/autofill/lib/utils.js");
+
 
 /* Group and organize imports in following way:
 - external dependencies,
