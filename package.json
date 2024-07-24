@@ -1,0 +1,12 @@
+{
+  "name": "socotra_manifesto",
+  "version": "1.0.0",
+  "description": "Examples for Radity Socotra Style Manifesto",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Liudmyla Deinychenko",
+  "license": "ISC"
+}
