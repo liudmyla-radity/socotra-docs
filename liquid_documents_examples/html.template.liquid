@@ -1,5 +1,5 @@
 {% comment %}
-  Use the correct base meta tags in the head of your document.
+  Tip 1: Use the correct base meta tags in the head of your document.
 {% endcomment %}
 
 <html>
@@ -22,3 +22,19 @@
     </body>
 </html>
 
+
+{% comment %}
+  Tip 1: Use ‘{{ variable }}’ syntax for the attributes based on dynamic variables.
+{% endcomment %}
+
+{% assign logoURL = fieldGroups[producerLocator].brokerageLogoURL %}
+
+<tr>
+  <td>
+    <img
+      width="auto"
+      src="{{logoURL}}"
+      alt='Broker logo' 
+      />
+  </td>
+</tr>

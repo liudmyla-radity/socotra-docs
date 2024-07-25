@@ -1,0 +1,51 @@
+{% comment %}
+  Tip 1: Use filters for basic operations instead of complex calculations.
+{% endcomment %}
+
+<td class='right-texted'>
+  {% if equipmentBreakdownPeril.name == 'BM35' %}
+    {{ EBTotalLimit | divided_by: 100 | times: 10 | at_least: 1000 }}
+  {% else %}
+    {{ equipmentBreakdownPerilDeductibleValue }}
+  {% endif %}
+</td>
+
+
+{% comment %}
+  Tip 2: Always ensure that filters will be applied to existing data and proper data type.
+{% endcomment %}
+
+<!-- Ensure that required data exists -->
+<td class='right-texted'>
+  {% if EBTotalLimit %}
+    {{ EBTotalLimit | format_number: 'en', 'US' | prepend: '$' }}
+  {% endif %}
+</td>
+
+<!-- Conver data to required type using filters -->
+ {% assign perilNumberOfDays = perilFieldValues.vacancyDays | plus: 0 %}
+
+<!-- Use map or where filters to obtain data of Array type -->
+ {% assign locationExposuresArray = policy.exposures | where: 'name', 'location' %}
+
+{% for lossPayee in policyLossPayees %}
+    {% assign LPData = groupValues | map: lossPayee %}
+    {% assign lossPayeesData = lossPayeesData | concat: LPData %}
+{% endfor %}
+
+
+{% comment %}
+  Tip 3: Use nil value with render_static_document filter for conditional rendering.
+{% endcomment %}
+
+
+{% if policy_state === "CA" %}
+  <!-- Document is rendered-->
+    <html>
+      ...
+    </html>
+
+  {% else %}
+    <!-- Document is not rendered-->
+    {{ nil | render_static_document }}
+{% endif %}

@@ -1,0 +1,152 @@
+{% comment %}
+  Tip 1: Name classes with Atomic CSS methodology.
+{% endcomment %}
+
+<style>     
+      .mb-1 {
+        margin-bottom: 1rem;
+      }
+
+      .color-blue {
+        color: #318CE7;
+      }
+</style>
+
+<div class="mb-1">
+    <p class="color-blue">Text in blue</p>
+</div>
+
+
+{% comment %}
+  Tip 2: Use {{ variable }} syntax for dynamic CSS properties.
+{% endcomment %}
+
+{% for peril in packPerils %}
+    {% if forloop.index > 1 %}
+        {% assign paddingLeft = "20px" %}
+      {% else %}
+        {% assign paddingLeft = "0" %}
+    {% endif %}
+
+    <tr>
+        <td>
+            <p style='padding-left: {{ paddingLeft }}'>{{perilAllFields.description.new_value }}</p>
+        </td>
+    </tr>
+{% endfor %}
+
+
+{% comment %}
+  Tip 3: Use special syntax with image_url filter to refer to image urls.
+{% endcomment %}
+
+<style>
+    body {
+        min-height: 800px;
+        padding: 0 60px 10px;
+
+        background-color: #ffffff;
+        background-image: url('{{"https://dev-server.com/liquid-body.png" | image_url}}');
+        background-repeat: repeat;
+        background-size: 100% 1050px;
+
+        color: #363535;
+        font-size: 16px;
+        line-height: 18px;
+      }
+</style>
+
+
+{% comment %}
+  Tip 4: Styles in liquid header/footer tages.
+{% endcomment %}
+
+<!-- If the header is small use inline styling approach -->
+{% header %}
+  <table style="width: 100%;">
+    <tr>
+      <td align="left" style="font-size: 20px;"></td>
+      <td align="right" colspan="1" style="width: 200px; margin: 0; font-size: 16px;">
+          <p style="padding: 5px;">Policy#{{ policy.display_id }}</p>
+      </td>
+    </tr>
+  </table>
+{% endheader %}
+
+<!-- If the header is big use class styling approach -->
+{% header %}
+    <style>
+        .w-100 {
+            width: 100%;
+        }
+
+        .w-60 {
+           width: 60%; 
+        }
+
+        .w-40 {
+            width: 40%;
+        }
+
+        .mw-250p {
+            max-width: 250px
+        }
+
+        .h-100 {
+            height: 100%;
+        }
+
+        .h-120p {
+            height: 120px;
+        }
+
+        .mt-10 {
+            margin-top: 10px;
+        }
+
+        .ml-20 {
+            margin-left: 20px;
+        }
+        
+        .color-grey {
+            color: #929394;
+        }
+
+        .fw-800 {
+           font-weight: 800 
+        }
+
+        .lh-21 {
+            line-height: 21px;
+        }
+
+        .uppercase {
+            text-transform: uppercase;
+        }
+    </style>
+
+    <div class="w-100 h-120p ml-20">
+      <header class="color-grey">
+        <table class="w-100">
+          <tr class="h-100 lh-21">
+            <td class="w-60">
+              {% if logoURL and logoURL != '' %}
+                <img
+                  width='auto'
+                  src='{{logoURL}}'
+                  alt='Broker logo'
+                  class="h-120p mw-250p mt-10"
+                >
+              {% endif %}
+            </td>
+            <td class="w-40">
+              <span class="fw-800 uppercase">UNDERWRITTEN BY:</span>
+              <br>
+              First Acre Insurance Inc.<br>
+              www.firstacre.ca
+            </td>
+          </tr>
+        </table>
+      </header>
+    </div>
+{% endheader %}
